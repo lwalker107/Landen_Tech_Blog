@@ -4,20 +4,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>User Registry</title>
+  <title>Tech Blog</title>
   <link rel="stylesheet" href="/css/jass.css">
 </head>
 
 <body>
   <header class="display-flex justify-space-between align-center p-2">
     <h1>
-      User Registry
+      Tech Blog
     </h1>
-    {{#if logged_in}}
     <nav>
-      <button class="btn" id="logout">logout</button>
+      <a href="/">home</a>
+      {{#if loggedIn}}
+      <button class="btn" id="dashboard">Dashboard</button>
+      <button class="btn" id="logout">Logout</button>
+      {{else}}
+      <a href="/login">Login</button>
     </nav>
-    {{/if}}
   </header>
   <main class="container container-fluid mt-5">
     {{{ body }}}
