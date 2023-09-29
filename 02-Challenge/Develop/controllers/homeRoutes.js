@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
 
     res.render('homepage', {
       // users,
-      loggedIn: req.session.loggedIn,
+      loggedIn: req.session.logged_in,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -24,6 +24,7 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/login', (req, res) => {
+  console.log(req.session);
   if (req.session.logged_in) {
     res.redirect('/');
     return;
@@ -37,7 +38,7 @@ router.get('/dashboard', withAuth, (req, res) => {
   try {
 
     res.render('dashboard', {
-      loggedIn: req.sessions.loggedIn,
+      loggedIn: req.session.logged_in,
     });
   } catch (err) {
     res.status(500).json(err);
