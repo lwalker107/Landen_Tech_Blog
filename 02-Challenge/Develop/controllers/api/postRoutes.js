@@ -1,17 +1,18 @@
 const router = require('express').Router();
 const { Post } = require('../../models');
 
-router.post('/post', async (req, res) => {
+router.post('/', async (req, res) => {
   try {
-    
-
-    req.session.save(() => {
-      req.session.loggedIn = true;
-
-      res.status(200).json(UserData);
+    const PostData = await Post.create({
+      title: req.body.title,
+      content: req.body.content,
+      user_id: req.session.user_id,
     });
+      res.status(200).json(PostData);
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
 });
+
+module.exports = router;
